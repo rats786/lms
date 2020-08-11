@@ -1,0 +1,58 @@
+import csv
+class book: 
+    ## Attributes Initialization     
+    def __init__(self,book_id,name,author,published_year,genre,book_count):        
+        self.book_id=book_id
+        self.name=name
+        self.author=author
+        self.published_year=published_year
+        self.genre=genre
+        self.book_count=book_count
+    ## AddBook Method        
+    def addbook(self):
+        with open('book.csv', 'a',newline="") as bookdata:
+         csv_writer=csv.writer(bookdata)
+         row=self.book_id,self.name,self.author,self.published_year,self.genre,self.book_count
+         csv_writer.writerow(row)
+
+class member:
+    ## Attributes Initialization   
+    def __init__(self,member_id,member_name,books_issued_member,membership_status):        
+        self.member_id=member_id
+        self.member_name=member_name
+        self.books_issued_member=books_issued_member
+        self.membership_status=membership_status
+    ## AddMember Method
+    def addmember(self):
+        with open('members.csv', 'a',newline="") as member:
+         csv_writer=csv.writer(member)
+         row=self.member_id,self.member_name,self.books_issued_member,self.membership_status
+         csv_writer.writerow(row)
+
+
+class library(book,member):
+    def __init__(self):
+        pass              
+    ## Method being used as property
+    @property
+    def list_book(self):
+        with open('book.csv', 'r') as bookdata:
+            reader=csv.reader(bookdata)
+            print("\nList of Books are as follows")
+            for row in reader:
+                print(row) 
+     ## Method being used as property
+    @property
+    def member_list(self):
+        with open('members.csv', 'r') as bookdata:
+            reader=csv.reader(bookdata)
+            print("\n\nList of members as follows")
+            for row in reader:
+                print(row) 
+
+
+x=library()   
+x.list_book   
+x.member_list    
+    
+   
