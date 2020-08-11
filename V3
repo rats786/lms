@@ -1,0 +1,85 @@
+import os
+os.chdir("E:\Python")
+
+class book: # Class book
+    
+    def __init__(self,book_id,book_name,author,published_year,genre,book_count):
+        self.book_id = book_id
+        self.book_name = book_name
+        self.author = author
+        self.published_year = published_year
+        self.genre = genre
+        self.book_count = book_count
+    
+    def add_book(self):
+        pass
+
+    def issue_book(self):
+        pass
+
+class member:
+    
+    def __init__(self,member_id,name,books_issued,membership_status):
+        self.member_id = member_id
+        self.name = name
+        self.books_issued = books_issued
+        self.membership_status = membership_status
+    
+    def add_member(self):
+        pass
+
+    def update_membershipstatus(self):
+        pass
+
+class library(book,member):
+    
+    def __init__(self,booklist,memberlist,issuelist):
+        self.booklist = booklist
+        self.memberlist = memberlist
+        self.issuelist = issuelist
+    
+    def list_allbooks(self):
+        print("This Library has below listed books: \n")
+        for book in self.booklist:
+            print(f"Book Name:{book.book_name}")
+            print(f"ID:{book.book_id}, Published Year:{book.published_year}, Author:{book.author}, Genre:{book.genre}, Copies:{book.book_count}")
+            print("-------------------------------")
+    def list_allmemberships(self):
+        pass
+
+    def list_allissuedbooks(self):
+        pass
+
+    def list_allbooksbasedonGenre(self):
+        pass
+
+    def list_Activemembers(self):
+        pass
+
+    def List_Inactivemembers(self):
+        pass
+    
+def main():
+    
+    listbooks = []
+    listmembers = []
+    booksissued = []
+
+    Munish = member('m1','Munish',['123'],'Y')
+    Ratz = member('m2','Ratz',['128'],'Y')
+    
+    AI = book('123','AI','Ratz','2015','Artificial Intelligence','1')
+    automata = book('128','Automata','Ratz','2010','Computers','1')
+    
+    listbooks.append(AI)
+    listbooks.append(automata)
+    listmembers.append(Munish)
+    listmembers.append(Ratz)
+    booksissued = ['123','128']
+
+    lms = library(listbooks,listmembers,booksissued)
+    print(lms.list_allbooks())
+
+
+if __name__ == "__main__":
+    main()
