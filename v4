@@ -1,0 +1,122 @@
+import csv
+import os
+
+os.chdir("E:\Python")
+
+class book: # Class book
+    
+    def __init__(self,book_id='',book_name='',author='',published_year='',genre='',book_count=''):
+        self.book_id = book_id
+        self.book_name = book_name
+        self.author = author
+        self.published_year = published_year
+        self.genre = genre
+        self.book_count = book_count
+
+class member():
+    
+    def __init__(self,member_id='',member_name='',books_issued='',membership_status=''):
+        self.member_id = member_id
+        self.member_name = member_name
+        self.books_issued = books_issued
+        self.membership_status = membership_status
+    
+    
+class library(book,member):
+    def __init__(self,booklist='',memberlist='',issuelist='',name=''):
+        self.booklist = booklist
+        self.memberlist = memberlist
+        self.issuelist = issuelist
+        self.name = name
+
+    def add_book(self,book):
+        self.booklist.append(book)
+        
+    def issue_book(self):
+        pass
+
+    def add_member(self,member):
+        self.memberlist.append(member)
+
+    def update_membershipstatus(self):
+        pass
+
+    def list_allbooks(self):
+      
+        if len(self.booklist) > 0:
+            print(f"The Library:{self.name}, has below listed books: \n")
+            for book in self.booklist:
+                print(f"Book Name:{book.book_name}")
+                print(f"Book ID:{book.book_id}, Published Year:{book.published_year}, Author:{book.author}, Genre:{book.genre}, Copies:{book.book_count}")
+                print("-------------------------------")
+        else:
+            print("Currently, this Library has no books.")
+    
+    def list_allmemberships(self):
+        
+        if len(self.memberlist) > 0:
+            print(f"The Library:{self.name}, has below listed members: \n")
+            for member in self.memberlist:
+                print(f"Member Name:{member.member_name}")
+                print(f"Member ID:{member.member_id}")
+                if len(member.books_issued) > 0:
+
+                    print("this member has below books issued to him/her")
+                    for book in member.books_issued:
+                        print(f"Book Name:{book.book_name}")
+                        print(f"Book ID:{book.book_id}, Published Year:{book.published_year}, Author:{book.author}, Genre:{book.genre}, Copies:{book.book_count}")
+                        print("-------------------------------")
+                else:
+                    print("Currently, this member has no books issued to him/her.")
+        else:
+            print("Currently, this Library has no members.")
+
+    def list_allissuedbooks(self):
+        pass
+
+    def list_allbooksbasedonGenre(self):
+        pass
+
+    def list_Activemembers(self):
+        pass
+
+    def List_Inactivemembers(self):
+        pass
+    
+def main():
+    
+    Munish = member('m1','Munish',[],'')
+    Ratz = member('m2','Ratz',[],'')
+    
+    ds = book('127','DS','Rajvinder','2016','Data Structure','2')
+    db = book('167','DB','Rajvinder','2016','Database','2')
+    
+    Munish = member('m1','Munish',[],'')
+    Ratz = member('m2','Ratz',[],'')
+
+    lms = library([],[],[],'Ratz')
+    #lms1 = library([],[],[],'Munish')
+   
+    
+    #lms1.add_book(ds)
+    lms.add_book(ds)
+    #lms1.add_book(db)
+
+    lms.add_member(Ratz)
+    #lms1.add_member(Munish)
+
+
+    print(lms.list_allbooks())
+    print(lms.list_allmemberships())
+    #print(lms1.list_allbooks())
+    #print(lms.list_allbooks())
+    #print(lms1.list_allbooks())
+
+  
+
+
+    #print(lms.booklist[0].book_name)
+
+
+if __name__ == "__main__":
+    main()
